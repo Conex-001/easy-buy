@@ -1,0 +1,29 @@
+.cart-page {
+  padding: 30px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.cart-item img {
+  border-radius: 8px;
+}
+
+.cart-item input {
+  width: 60px;
+  padding: 4px;
+  margin-top: 8px;
+}
+
+.cart-item button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

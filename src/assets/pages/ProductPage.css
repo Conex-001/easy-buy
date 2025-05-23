@@ -1,0 +1,22 @@
+.product-detail {
+  display: flex;
+  padding: 40px;
+  gap: 30px;
+}
+.product-detail img {
+  width: 300px;
+}
+.info {
+  max-width: 600px;
+}
+.price {
+  font-size: 24px;
+  color: green;
+}
+button {
+  padding: 10px 20px;
+  background: orange;
+  color: black;
+  border: none;
+  cursor: pointer;
+}

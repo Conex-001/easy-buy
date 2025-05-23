@@ -1,0 +1,11 @@
+.easybuy-logo {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ecf0f1; /* light text */
+  user-select: none;
+}
+
+.easybuy-logo span {
+  color: #e67e22; /* orange accent for "Buy" */
+}
