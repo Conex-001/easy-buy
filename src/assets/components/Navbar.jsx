@@ -50,6 +50,9 @@ const Navbar = () => {
                     placeholder="Email or Phone"
                   />
                   <button onClick={handleLogin}>Continue</button>
+                  <p style={{ marginTop: "10px", fontSize: "0.9rem" }}>
+                    New here? <Link to="/register" onClick={() => setShowDropdown(false)}>Create an account</Link>
+                  </p>
                 </>
               ) : (
                 <>

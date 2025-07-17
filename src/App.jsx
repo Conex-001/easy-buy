@@ -16,7 +16,8 @@ import CartPage from "./assets/pages/CartPage";
 import AdminDashboard from "./assets/pages/AdminDashboard";
 import UserDashboard from "./assets/pages/UserDashboard";
 
-import Login from "./assets/pages/Login"; // import the new Login page
+import Login from "./assets/pages/Login";
+import Register from "./assets/pages/Register"; // ✅ Register Page import
 
 import { UserProvider, useUser } from "./context/UserContext";
 import { CartProvider } from "./context/CartContext";
@@ -26,17 +27,14 @@ const PrivateRoute = ({ children, adminOnly = false }) => {
   const { user } = useUser();
 
   if (!user) {
-    // Redirect unauthenticated users to login
     return <Navigate to="/login" replace />;
   }
 
   if (adminOnly && !user.isAdmin) {
-    // Logged in but not admin, redirect to user dashboard
     return <Navigate to="/dashboard" replace />;
   }
 
   if (!adminOnly && user.isAdmin) {
-    // Logged in as admin but accessing user route, redirect to admin dashboard
     return <Navigate to="/admin" replace />;
   }
 
@@ -56,7 +54,8 @@ const App = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/product/:id" element={<ProductPage />} />
               <Route path="/cart" element={<CartPage />} />
-              <Route path="/login" element={<Login />} /> {/* New Login Route */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} /> {/* ✅ Register route added */}
 
               {/* Protected Routes */}
               <Route
@@ -76,7 +75,7 @@ const App = () => {
                 }
               />
 
-              {/* Catch all unmatched routes, redirect to login */}
+              {/* Catch all unmatched routes */}
               <Route path="*" element={<Navigate to="/login" replace />} />
             </Routes>
 

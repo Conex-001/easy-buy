@@ -1,17 +1,31 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Start logged out
+  // Try to load user from localStorage on initial render
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("easyBuyUser");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
 
-  const login = (identifier) => {
-    const isAdmin = identifier.toLowerCase().includes("admin");
-    setUser({ name: identifier, isAdmin });
+  // Update localStorage whenever user changes
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("easyBuyUser", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("easyBuyUser");
+    }
+  }, [user]);
+
+  // Accept full user data on login (object with name, isAdmin, token, etc)
+  const login = (userData) => {
+    setUser(userData);
   };
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("easyBuyUser");
   };
 
   return (

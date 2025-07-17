@@ -3,14 +3,13 @@ import { useParams } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import PRODUCTS from "../../data/products";
 import "./ProductPage.css";
-import SimilarProducts from "../components/SimilarProducts"; // ✅ Already correctly imported
+import SimilarProducts from "../components/SimilarProducts";
 
 const ProductPage = () => {
   const { id } = useParams();
   const product = PRODUCTS.find((p) => p.id === id);
   const { addToCart } = useCart();
 
-  // ✅ Make sure we check if product exists
   if (!product) return <p>Product not found</p>;
 
   return (
